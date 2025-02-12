@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로켓부스트 블록체인 엔지니어링 부트캠프</title>
+    <title>Blog - 로켓부스트 블록체인 엔지니어링 부트캠프</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="scripts.js"></script>
     <style>
@@ -29,14 +29,43 @@
             margin-top: 20px;
         }
 
-        h1, h2 {
-            color: #ffffff;
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(28, 28, 28, 0.9);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 18px;
         }
 
-        .content-section {
-            margin-top: 30px;
-            padding: 15px;
+        .blog-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .blog-list li {
             background: #2a2a2a;
+            margin: 10px 0;
+            padding: 15px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
         }
@@ -44,26 +73,20 @@
 </head>
 <body>
     <header>
-        <h1>로켓부스트 블록체인 엔지니어링 부트캠프</h1>
+        <h1>Blog - 로켓부스트 블록체인 엔지니어링 부트캠프</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="curriculum.html">Curriculum</a></li>
-                <li><a href="blog.html">Blog</a></li>
             </ul>
         </nav>
     </header>
     
     <div class="container">
-        <section class="intro">
-            <h2>소개</h2>
-            <p>이 블로그는 로켓부스트 블록체인 엔지니어링 부트캠프 과정에서 배운 내용을 기록하는 공간입니다.</p>
-        </section>
-        
-        <section class="content-section">
-            <h2>📅 최신 블로그 글</h2>
-            <ul id="latest-blogs">
-                <!-- 최신 블로그 글이 여기에 자동 추가됨 -->
+        <section class="blog-section">
+            <h2>📅 날짜별 블로그 글</h2>
+            <ul id="blog-list" class="blog-list">
+                <!-- 블로그 글이 여기에 자동 추가됨 -->
             </ul>
         </section>
     </div>
@@ -74,7 +97,7 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let blogList = document.getElementById("latest-blogs");
+            let blogList = document.getElementById("blog-list");
             let blogs = [
                 { date: "2024-02-04", title: "해시(Hash)와 블록체인", url: "blog/2024-02-04.html" },
                 { date: "2024-02-05", title: "블록체인 네트워크 구조", url: "blog/2024-02-05.html" }
