@@ -86,7 +86,7 @@
         <section class="blog-section">
             <h2>📅 날짜별 블로그 글</h2>
             <ul id="blog-list" class="blog-list">
-                <!-- 블로그 글이 여기에 자동 추가됨 -->
+                <!-- 블로그 글이 자동 추가됨 -->
             </ul>
         </section>
     </div>
@@ -97,20 +97,21 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let blogList = document.getElementById("blog-list");
-            let blogs = [
-                { date: "2024-02-04", title: "해시(Hash)와 블록체인", url: "blog/2024-02-04.html" },
-                { date: "2024-02-05", title: "블록체인 네트워크 구조", url: "blog/2024-02-05.html" }
-            ];
-            
-            blogs.forEach(blog => {
-                let li = document.createElement("li");
-                let a = document.createElement("a");
-                a.href = blog.url;
-                a.textContent = `${blog.date} - ${blog.title}`;
-                li.appendChild(a);
-                blogList.appendChild(li);
-            });
+            fetch("blog/blog-list.json")
+                .then(response => response.json())
+                .then(blogs => {
+                    let blogList = document.getElementById("blog-list");
+                    blogs.sort((a, b) => new Date(b.date) - new Date(a.date)); // 최신순 정렬
+                    blogs.forEach(blog => {
+                        let li = document.createElement("li");
+                        let a = document.createElement("a");
+                        a.href = blog.url;
+                        a.textContent = `${blog.date} - ${blog.title}`;
+                        li.appendChild(a);
+                        blogList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error("블로그 데이터를 불러오는 중 오류 발생:", error));
         });
     </script>
 </body>
