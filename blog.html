@@ -86,7 +86,7 @@
         <section class="blog-section">
             <h2>📅 날짜별 블로그 글</h2>
             <ul id="blog-list" class="blog-list">
-                <!-- 블로그 글이 자동 추가됨 -->
+                <li>로딩 중...</li>
             </ul>
         </section>
     </div>
@@ -97,10 +97,15 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("blog/blog-list.json")
+            fetch("blog/generate-blog-list.php") // JSON 대신 PHP로 자동 업데이트
                 .then(response => response.json())
                 .then(blogs => {
                     let blogList = document.getElementById("blog-list");
+                    blogList.innerHTML = ""; // 기존 목록 초기화
+                    if (blogs.length === 0) {
+                        blogList.innerHTML = "<li>등록된 블로그 글이 없습니다.</li>";
+                        return;
+                    }
                     blogs.sort((a, b) => new Date(b.date) - new Date(a.date)); // 최신순 정렬
                     blogs.forEach(blog => {
                         let li = document.createElement("li");
@@ -111,7 +116,10 @@
                         blogList.appendChild(li);
                     });
                 })
-                .catch(error => console.error("블로그 데이터를 불러오는 중 오류 발생:", error));
+                .catch(error => {
+                    console.error("블로그 데이터를 불러오는 중 오류 발생:", error);
+                    document.getElementById("blog-list").innerHTML = "<li>블로그 데이터를 불러올 수 없습니다.</li>";
+                });
         });
     </script>
 </body>

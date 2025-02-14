@@ -64,11 +64,13 @@
         .curriculum-section h2 {
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
+            cursor: pointer;
         }
         
         .curriculum-list {
             list-style: none;
             padding: 0;
+            display: none;
         }
         
         .curriculum-list li {
@@ -92,27 +94,27 @@
     </header>
     
     <div class="container">
-        <section class="curriculum-section">
+        <section class="curriculum-section" onclick="toggleSection('section1')">
             <h2>섹션 1. 블록체인과 프로그래밍 기초 (1-5주)</h2>
-            <ul class="curriculum-list">
+            <ul id="section1" class="curriculum-list">
                 <li>챕터 1: 블록체인의 개요와 역사</li>
                 <li>챕터 2: 기초 웹 개발</li>
                 <li>챕터 3: 파이썬 기초, TypeScript</li>
             </ul>
         </section>
         
-        <section class="curriculum-section">
+        <section class="curriculum-section" onclick="toggleSection('section2')">
             <h2>섹션 2. 블록체인 프로그래밍 (6-14주)</h2>
-            <ul class="curriculum-list">
+            <ul id="section2" class="curriculum-list">
                 <li>챕터 4: 블록체인 플랫폼 소개</li>
                 <li>챕터 5: 스마트 계약 프로그래밍 ①</li>
                 <li>챕터 6: 스마트 계약 프로그래밍 ②</li>
             </ul>
         </section>
         
-        <section class="curriculum-section">
+        <section class="curriculum-section" onclick="toggleSection('section3')">
             <h2>섹션 3. 서버, 데이터베이스, 보안, 성능 (15-19주)</h2>
-            <ul class="curriculum-list">
+            <ul id="section3" class="curriculum-list">
                 <li>챕터 7: 백엔드 기초</li>
                 <li>챕터 8: 데이터베이스와 블록체인 통합</li>
                 <li>챕터 9: 블록체인 보안</li>
@@ -120,9 +122,9 @@
             </ul>
         </section>
         
-        <section class="curriculum-section">
+        <section class="curriculum-section" onclick="toggleSection('section4')">
             <h2>섹션 4. 종합 프로젝트 (20-28주)</h2>
-            <ul class="curriculum-list">
+            <ul id="section4" class="curriculum-list">
                 <li>챕터 11: 사전 프로젝트</li>
                 <li>챕터 12: 최종 프로젝트</li>
             </ul>
@@ -132,5 +134,16 @@
     <footer>
         <p>&copy; 2025 로켓부스트 블록체인 엔지니어링 부트캠프. All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        function toggleSection(id) {
+            let section = document.getElementById(id);
+            if (section.style.display === "none" || section.style.display === "") {
+                section.style.display = "block";
+            } else {
+                section.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
