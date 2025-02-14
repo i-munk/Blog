@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로켓부스트 블록체인 엔지니어링 부트캠프</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
     <style>
         body {
             background-color: #121212;
             color: #e0e0e0;
-            font-family: Georgia, 'Times New Roman', serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,51 +17,94 @@
             align-items: center;
             padding-top: 80px;
         }
-
+        
+        header {
+            width: 100%;
+            background: linear-gradient(90deg, #ff8c00, #ff3b3b);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
         .container {
             width: 80%;
             max-width: 900px;
             background: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            margin-top: 100px;
+            text-align: center;
         }
-
-        h1, h2 {
-            color: #ffffff;
+        
+        h2 {
+            color: #ff8c00;
         }
-
-        .content-section {
-            margin-top: 30px;
-            padding: 15px;
-            background: #2a2a2a;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-        }
-
-        #latest-blogs {
-            list-style-type: none;
+        
+        .latest-blogs ul {
             padding: 0;
+            list-style: none;
         }
-
-        #latest-blogs li {
+        
+        .latest-blogs li {
             background: #2a2a2a;
             margin: 10px 0;
-            padding: 10px;
+            padding: 15px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .latest-blogs li:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1e1e1e;
+            text-align: center;
+            color: #e0e0e0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>로켓부스트 블록체인 엔지니어링 부트캠프</h1>
+        🚀 로켓부스트 블록체인 엔지니어링 부트캠프
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="curriculum.html">Curriculum</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -73,7 +115,7 @@
             <p>이 블로그는 로켓부스트 블록체인 엔지니어링 부트캠프 과정에서 배운 내용을 기록하는 공간입니다.</p>
         </section>
         
-        <section class="content-section">
+        <section class="latest-blogs">
             <h2>📅 최신 블로그 글</h2>
             <ul id="latest-blogs">
                 <li>로딩 중...</li>
@@ -82,40 +124,9 @@
     </div>
     
     <footer>
-        <p>&copy; 2025 로켓부스트 블록체인 엔지니어링 부트캠프. All Rights Reserved.</p>
+        <p>&copy; 2025 Hansoo.Lim. ALL RIGHTS Reserved.</p>
     </footer>
     
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("blog/blog-list.json")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("블로그 목록을 불러올 수 없습니다.");
-                    }
-                    return response.json();
-                })
-                .then(blogs => {
-                    let blogList = document.getElementById("latest-blogs");
-                    blogList.innerHTML = ""; // 기존 목록 초기화
-                    if (blogs.length === 0) {
-                        blogList.innerHTML = "<li>등록된 블로그 글이 없습니다.</li>";
-                        return;
-                    }
-                    blogs.sort((a, b) => new Date(b.date) - new Date(a.date)); // 최신순 정렬
-                    blogs.forEach(blog => {
-                        let li = document.createElement("li");
-                        let a = document.createElement("a");
-                        a.href = blog.url;
-                        a.textContent = `${blog.date} - ${blog.title}`;
-                        li.appendChild(a);
-                        blogList.appendChild(li);
-                    });
-                })
-                .catch(error => {
-                    console.error("블로그 데이터를 불러오는 중 오류 발생:", error);
-                    document.getElementById("latest-blogs").innerHTML = "<li>블로그 데이터를 불러올 수 없습니다.</li>";
-                });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
