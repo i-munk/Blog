@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-02-07 블로그 - 이더리움</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>🚀 블록체인 학습 일지 - 2025년 2월 7일</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../curriculum.html">Curriculum</a></li>
+                <li><a href="../blog/index.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>📌 이더리움 (Ethereum)</h2>
+            <p>스마트 컨트랙트(Smart Contract)와 분산 애플리케이션(DApp)을 실행할 수 있는 확장 가능한 블록체인 플랫폼입니다.</p>
+            <h3>🔹 창시자: 비탈릭 부테린 (Vitalik Buterin)</h3>
+            <ul>
+                <li>비트코인에 튜링 완전성을 추가하자는 제안을 했으나 거절당함</li>
+                <li>프로그래밍 가능한 블록체인 이더리움을 개발</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 이더리움의 핵심 기술</h2>
+            <ul>
+                <li><strong>스마트 컨트랙트 (Smart Contract):</strong> 블록체인에서 실행되는 자동화된 계약</li>
+                <li><strong>EVM (Ethereum Virtual Machine):</strong> 모든 스마트 컨트랙트를 실행하는 가상 머신</li>
+                <li><strong>PoS 합의 알고리즘:</strong> 기존 PoW에서 PoS로 전환하여 확장성과 보안 강화</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 이더리움의 블록체인 모델</h2>
+            <p>이더리움은 <strong>어카운트 기반 모델 (Account-based)</strong>을 사용합니다.</p>
+            <ul>
+                <li>모든 사용자와 스마트 계약이 계정(Account)으로 표현됨</li>
+                <li>계정을 통해 상태(State)와 자산 관리</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 계정 종류</h2>
+            <ul>
+                <li><strong>외부 소유 계정(EOA, Externally Owned Account):</strong> 개인이 소유한 계정으로, 개인키로 제어됨</li>
+                <li><strong>스마트 계약 계정(Contract Account):</strong> 스마트 컨트랙트가 배포된 계정으로, 트랜잭션 발생 시 코드 실행</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 계정 상태</h2>
+            <ul>
+                <li><strong>Nonce:</strong> 해당 계정에서 보낸 트랜잭션 수</li>
+                <li><strong>Balance:</strong> 계정에 저장된 이더(Ether)의 양</li>
+                <li><strong>Storage:</strong> 스마트 계약 데이터 (스마트 계약 계정에만 해당)</li>
+                <li><strong>CodeHash:</strong> 스마트 계약 코드 (스마트 계약 계정에만 해당)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 트랜잭션 방식</h2>
+            <p>이더리움에서는 계정 간에 트랜잭션을 보내 상태를 변경할 수 있습니다.</p>
+            <ul>
+                <li>이더(Ether)를 전송하는 트랜잭션</li>
+                <li>스마트 컨트랙트를 호출하는 트랜잭션</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📌 비트코인 VS 이더리움</h2>
+            <table border="1">
+                <tr>
+                    <th>기준</th>
+                    <th>비트코인</th>
+                    <th>이더리움</th>
+                </tr>
+                <tr>
+                    <td>목적</td>
+                    <td>디지털 화폐 (P2P 전자 화폐, 디지털 골드)</td>
+                    <td>탈중앙화된 글로벌 컴퓨터 (스마트 컨트랙트 실행)</td>
+                </tr>
+                <tr>
+                    <td>확장성</td>
+                    <td>제한적 (확장성 문제 존재)</td>
+                    <td>스마트 컨트랙트 및 DApp 지원</td>
+                </tr>
+                <tr>
+                    <td>합의 알고리즘</td>
+                    <td>PoW (작업 증명)</td>
+                    <td>PoS (지분 증명, 이더리움 2.0)</td>
+                </tr>
+                <tr>
+                    <td>네트워크 수수료</td>
+                    <td>거래 수수료 (Bitcoin Fee)</td>
+                    <td>가스(Gas) 시스템을 이용한 수수료</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>📌 스마트 컨트랙트 (Smart Contract)</h2>
+            <p>블록체인에서 실행되는 자동화된 계약(프로그램)으로, 특정 조건이 충족되면 자동으로 실행됩니다.</p>
+            <h3>🔹 특징</h3>
+            <ul>
+                <li><strong>자동 실행:</strong> 계약 조건이 충족되면 즉시 실행됨</li>
+                <li><strong>변경 불가능 (Immutable):</strong> 배포 후 코드 변경 불가능 (업그레이드는 가능)</li>
+                <li><strong>투명성:</strong> 블록체인에 기록되므로 누구나 검증 가능</li>
+                <li><strong>보안성:</strong> 중앙 서버 없이 실행되므로 해킹 위험 감소</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Hansoo.Lim. ALL RIGHTS Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
