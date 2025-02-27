@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             align-items: center;
             padding-top: 80px;
         }
-        
+
         header {
             width: 100%;
             background: linear-gradient(90deg, #ff8c00, #ff3b3b);
@@ -31,18 +32,18 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         nav ul {
             list-style: none;
             padding: 0;
             display: flex;
             justify-content: center;
         }
-        
+
         nav ul li {
             margin: 0 15px;
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -50,11 +51,11 @@
             font-weight: bold;
             transition: color 0.3s;
         }
-        
+
         nav ul li a:hover {
             color: #ffd700;
         }
-        
+
         .container {
             width: 80%;
             max-width: 900px;
@@ -65,16 +66,16 @@
             margin-top: 100px;
             text-align: center;
         }
-        
+
         h2 {
             color: #ff8c00;
         }
-        
+
         .latest-blogs ul {
             padding: 0;
             list-style: none;
         }
-        
+
         .latest-blogs li {
             background: #2a2a2a;
             margin: 10px 0;
@@ -83,11 +84,11 @@
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s;
         }
-        
+
         .latest-blogs li:hover {
             transform: scale(1.05);
         }
-        
+
         footer {
             margin-top: 30px;
             padding: 20px;
@@ -97,6 +98,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         🚀 로켓부스트 블록체인 엔지니어링 부트캠프
@@ -104,17 +106,17 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="curriculum.html">Curriculum</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="blog/">Blog</a></li> <!-- ✅ URL 구조 개선 -->
             </ul>
         </nav>
     </header>
-    
+
     <div class="container">
         <section class="intro">
             <h2>소개</h2>
             <p>이 블로그는 로켓부스트 블록체인 엔지니어링 부트캠프 과정에서 배운 내용을 기록하는 공간입니다.</p>
         </section>
-        
+
         <section class="latest-blogs">
             <h2>📅 최신 블로그 글</h2>
             <ul id="latest-blogs">
@@ -122,11 +124,19 @@
             </ul>
         </section>
     </div>
-    
+
     <footer>
-        <p>&copy; 2025 Hansoo.Lim. ALL RIGHTS Reserved.</p>
+        <p>&copy; <span id="year"></span> Hansoo.Lim. ALL RIGHTS Reserved.</p>
     </footer>
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // ✅ 현재 연도 자동 업데이트
+            document.getElementById("year").textContent = new Date().getFullYear();
+        });
+    </script>
+
     <script src="scripts.js"></script>
 </body>
+
 </html>

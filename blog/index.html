@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,6 +102,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         🚀 로켓부스트 블록체인 엔지니어링 부트캠프
@@ -108,11 +110,11 @@
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../curriculum.html">Curriculum</a></li>
-                <li><a href="index.html">Blog</a></li>
+                <li><a href="./">Blog</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <div class="container">
         <section class="intro">
             <h2>📅 블로그 목록</h2>
@@ -121,15 +123,20 @@
             </ul>
         </section>
     </div>
-    
+
     <footer>
-        <p>&copy; 2025 Hansoo.Lim. ALL RIGHTS Reserved.</p>
+        <p>&copy; <span id="year"></span> Hansoo.Lim. ALL RIGHTS Reserved.</p>
     </footer>
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("blog-list.json")
-                .then(response => response.json())
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("./blog-list.json")  // ✅ 상대 경로 수정
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(blogs => {
                     let blogList = document.getElementById("blog-list");
                     blogList.innerHTML = "";
@@ -148,10 +155,14 @@
                     });
                 })
                 .catch(error => {
-                    console.error("블로그 데이터를 불러오는 중 오류 발생:", error);
+                    console.error("❌ 블로그 데이터를 불러오는 중 오류 발생:", error);
                     document.getElementById("blog-list").innerHTML = "<li>블로그 데이터를 불러올 수 없습니다.</li>";
                 });
+
+            // ✅ 현재 연도 자동 업데이트
+            document.getElementById("year").textContent = new Date().getFullYear();
         });
     </script>
 </body>
+
 </html>

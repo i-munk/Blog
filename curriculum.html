@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             align-items: center;
             padding-top: 80px;
         }
-        
+
         header {
             width: 100%;
             background: linear-gradient(90deg, #ff8c00, #ff3b3b);
@@ -31,18 +32,18 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         nav ul {
             list-style: none;
             padding: 0;
             display: flex;
             justify-content: center;
         }
-        
+
         nav ul li {
             margin: 0 15px;
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -50,11 +51,11 @@
             font-weight: bold;
             transition: color 0.3s;
         }
-        
+
         nav ul li a:hover {
             color: #ffd700;
         }
-        
+
         .container {
             width: 80%;
             max-width: 900px;
@@ -65,7 +66,7 @@
             margin-top: 100px;
             text-align: center;
         }
-        
+
         h2 {
             color: #ff8c00;
             font-size: 26px;
@@ -80,6 +81,7 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
             text-align: left;
+            cursor: pointer;
         }
 
         .curriculum-section h3 {
@@ -92,6 +94,8 @@
         .curriculum-section ul {
             list-style-type: none;
             padding: 0;
+            display: none;
+            /* 기본적으로 숨김 */
         }
 
         .curriculum-section ul li {
@@ -108,6 +112,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         🚀 로켓부스트 블록체인 엔지니어링 부트캠프
@@ -115,17 +120,17 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="curriculum.html">Curriculum</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="blog/index.html">Blog</a></li> <!-- ✅ 경로 수정 -->
             </ul>
         </nav>
     </header>
-    
+
     <div class="container">
         <section class="intro">
             <h2>📘 커리큘럼</h2>
             <p>이 페이지는 로켓부스트 블록체인 엔지니어링 부트캠프의 학습 커리큘럼을 정리한 공간입니다.</p>
         </section>
-        
+
         <section class="curriculum-section">
             <h2>1️⃣ 블록체인과 프로그래밍 기초</h2>
             <ul>
@@ -163,9 +168,29 @@
             </ul>
         </section>
     </div>
-    
+
     <footer>
-        <p>&copy; 2025 Hansoo.Lim. ALL RIGHTS Reserved.</p>
+        <p>&copy; <span id="year"></span> Hansoo.Lim. ALL RIGHTS Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // ✅ 연도 자동 업데이트
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            // ✅ 커리큘럼 섹션 클릭 시 챕터 토글 기능 추가
+            document.querySelectorAll(".curriculum-section").forEach(section => {
+                section.addEventListener("click", function () {
+                    let ul = this.querySelector("ul");
+                    if (ul.style.display === "block") {
+                        ul.style.display = "none";
+                    } else {
+                        ul.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
