@@ -5,6 +5,9 @@ on:
     branches:
       - main  # main 브랜치에 푸시될 때 실행
 
+permissions: 
+  contents: write  # ✅ GitHub Actions가 리포지토리를 수정할 수 있도록 권한 부여
+
 jobs:
   update-blog-list:
     runs-on: ubuntu-latest
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: 저장소 체크아웃
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 현재 디렉터리 및 파일 확인 (디버깅)
         run: |
@@ -31,12 +36,15 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
+          # GitHub Actions 인증을 위한 GITHUB_TOKEN 설정
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           
-          # 변경 사항 확인
+          # 변경 사항 확인 후 커밋 및 푸시
           if [[ `git status --porcelain` ]]; then
             git add blog/blog-list.json
             git commit -m "자동 업데이트: blog-list.json"
-            git push
+            git push origin main
           else
             echo "🔹 변경 사항 없음. 푸시하지 않음."
           fi
