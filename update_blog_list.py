@@ -29,8 +29,10 @@ for file in blog_files:
     except ValueError:
         continue
 
-# JSON 덮어쓰기
-with open(JSON_FILE, "w", encoding="utf-8") as f:
-    json.dump(new_blogs, f, ensure_ascii=False, indent=4)
-
-print("✅ blog-list.json 업데이트 완료!")
+# JSON 덮어쓰기 (이전 내용과 다를 경우만 저장)
+if blogs != new_blogs:
+    with open(JSON_FILE, "w", encoding="utf-8") as f:
+        json.dump(new_blogs, f, ensure_ascii=False, indent=4)
+    print("✅ blog-list.json 업데이트 완료!")
+else:
+    print("🔹 변경 사항 없음. blog-list.json을 수정하지 않음.")
